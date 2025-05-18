@@ -88,44 +88,32 @@ EOF
 			fi
 		fi
 
-		if [ "${LB_SECURITY}" = "true" ]
-		then
+		if [ "${LB_SECURITY}" = "true" ]; then
 			case "${LB_MODE}" in
 				debian|progress-linux)
 					case "${LB_PARENT_DISTRIBUTION}" in
 						sid)
-
 							;;
-
 						buster|bullseye)
 							echo "deb ${LB_PARENT_MIRROR_CHROOT_SECURITY} ${LB_PARENT_DISTRIBUTION}/updates ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
-
-							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]
-							then
+							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]; then
 								echo "deb-src ${LB_PARENT_MIRROR_CHROOT_SECURITY} ${LB_PARENT_DISTRIBUTION}/updates ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
 							fi
 							;;
 						*)
 							echo "deb ${LB_PARENT_MIRROR_CHROOT_SECURITY} ${LB_PARENT_DISTRIBUTION}-security ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
-
-							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]
-							then
+							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]; then
 								echo "deb-src ${LB_PARENT_MIRROR_CHROOT_SECURITY} ${LB_PARENT_DISTRIBUTION}-security ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
 							fi
 							;;
 					esac
-
-					if [ "${LB_MODE}" = progress-linux ]
-					then
+					if [ "${LB_MODE}" = progress-linux ]; then
 						echo "deb ${LB_MIRROR_CHROOT_SECURITY} ${_DISTRIBUTION}-security ${LB_ARCHIVE_AREAS}" >> chroot/etc/apt/sources.list.d/${LB_MODE}.list
-
-						if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]
-						then
+						if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]; then
 							echo "deb-src ${LB_MIRROR_CHROOT_SECURITY} ${_DISTRIBUTION}-security ${LB_ARCHIVE_AREAS}" >> chroot/etc/apt/sources.list.d/${LB_MODE}.list
 						fi
 					else
-						if [ "${LB_DERIVATIVE}" = "true" ]
-						then
+						if [ "${LB_DERIVATIVE}" = "true" ]; then
 							case "${_DISTRIBUTION}" in
 								buster|bullseye)
 									echo "deb ${LB_MIRROR_CHROOT_SECURITY} ${_DISTRIBUTION}/updates ${LB_ARCHIVE_AREAS}" >> chroot/etc/apt/sources.list.d/${LB_MODE}.list
@@ -140,8 +128,9 @@ EOF
 									fi
 									;;
 							esac
+					    fi
 					fi
-					;;
+				;;
 			esac
 		fi
 
@@ -592,43 +581,34 @@ EOF
 			fi
 		fi
 
-		if [ "${LB_SECURITY}" = "true" ]
-		then
+		if [ "${LB_SECURITY}" = "true" ]; then
 			case "${LB_MODE}" in
 				debian|progress-linux)
 					case "${LB_PARENT_DISTRIBUTION}" in
 						sid)
-
 							;;
-
 						buster|bullseye)
 							echo "deb ${LB_PARENT_MIRROR_BINARY_SECURITY} ${LB_PARENT_DISTRIBUTION}/updates ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
-
-							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]
-							then
+							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]; then
 								echo "deb-src ${LB_PARENT_MIRROR_BINARY_SECURITY} ${LB_PARENT_DISTRIBUTION}/updates ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
 							fi
 							;;
 						*)
 							echo "deb ${LB_PARENT_MIRROR_BINARY_SECURITY} ${LB_PARENT_DISTRIBUTION}-security ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
 
-							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]
-							then
+							if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]; then
 								echo "deb-src ${LB_PARENT_MIRROR_BINARY_SECURITY} ${LB_PARENT_DISTRIBUTION}-security ${LB_PARENT_ARCHIVE_AREAS}" >> chroot/etc/apt/${_PARENT_FILE}
 							fi
 							;;
 					esac
 
-					if [ "${LB_MODE}" = progress-linux ]
-					then
+					if [ "${LB_MODE}" = progress-linux ]; then
 						echo "deb ${LB_MIRROR_BINARY_SECURITY} ${_DISTRIBUTION}-security ${LB_ARCHIVE_AREAS}" >> chroot/etc/apt/sources.list.d/${LB_MODE}.list
-
-						if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]
-						then
+						if [ "${_PASS}" = "source" ] || [ "${LB_APT_SOURCE_ARCHIVES}" = "true" ]; then
 							echo "deb-src ${LB_MIRROR_BINARY_SECURITY} ${_DISTRIBUTION}-security ${LB_ARCHIVE_AREAS}" >> chroot/etc/apt/sources.list.d/${LB_MODE}.list
 						fi
 					else
-						if [ "${LB_DERIVATIVE}" = "true" ]
+						if [ "${LB_DERIVATIVE}" = "true" ]; then
 							case "${_DISTRIBUTION}" in
 								buster|bullseye)
 									echo "deb ${LB_MIRROR_BINARY_SECURITY} ${_DISTRIBUTION}/updates ${LB_ARCHIVE_AREAS}" >> chroot/etc/apt/sources.list.d/${LB_MODE}.list
@@ -643,6 +623,7 @@ EOF
 									fi
 									;;
 							esac
+						fi
 					fi
 					;;
 			esac
